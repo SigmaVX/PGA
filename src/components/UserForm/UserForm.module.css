@@ -1,0 +1,79 @@
+
+input{
+    text-align: center;
+}
+
+select { 
+    /* text-indent: 35%; */
+    text-align-last:center; 
+}
+
+.ButtonWrapper{
+    width: 400px;
+    margin: 20px auto;
+}
+
+.Input{
+    grid-column: 4/5;
+    width: 100%;
+    justify-self: end;
+    text-align: center;
+}
+
+.ErrorText{
+    color: maroon;
+    text-align: center;
+    font-weight: 700;
+    width: 100%;
+    display: block;
+    margin: 10px auto;
+}
+
+.ImageUploadWrapper{
+    color: light-grey;
+    font-size: 14px;
+    border-radius: 20px;
+    background-color: #fff;
+    text-align: center;
+    height: 32px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.Label{
+    grid-column: 1/4;
+    display: inline-block;
+    justify-self: start;
+    width: 100%;
+}
+
+.ModalBody{
+    margin: 20px;
+}
+
+.ModalButtons{
+    margin-top: 20px;
+}
+
+.ModalFormLabel{
+    text-align: center;
+    margin-bottom: 10px;
+    display: block;
+    font-weight: 600;
+}
+
+
+
+:global .Toastify__progress-bar--default{
+    background: repeating-radial-gradient(circle at center, #00aae7 0, #15bef0, #68cef2 30px) !important;
+}
+
+:global .Toastify__toast--default{
+    background: #b3b3b3 !important;
+    text-align: center !important; 
+    color: #071f2e !important;
+    border-radius: 10px !important;
+    border: 1px solid #ddd !important;
+    margin-top: 40px !important;
+}
+

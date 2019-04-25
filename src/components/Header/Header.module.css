@@ -1,0 +1,24 @@
+  
+.Header {
+    background-color: #282c34;
+    min-height: 10vh;
+    color: white;
+}
+
+.Logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 8vh;
+    margin-top: 1vh;
+    margin-left: 1vw;
+    pointer-events: none;
+}
+  
+  
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

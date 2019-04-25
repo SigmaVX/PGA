@@ -1,0 +1,54 @@
+tbody > tr:nth-child(odd){
+    background-color: #ddd;
+}
+
+tbody > tr:nth-child(even){
+    background-color: #fff;
+}
+
+tbody tr{
+    height: 35px;
+}
+
+td{
+    color: #3f3e3a;
+    padding-bottom: 15px;
+    text-align: center;
+}
+
+thead{
+    background-color: #3f3e3a;
+    font-weight: 1000;
+    font-size: 22px;
+    color: #eff0f2;
+}
+
+th{
+    height: 40px;
+    padding-top: 10px;
+}
+
+thead tr:first-child th:first-child {
+    border-top-left-radius: 10px;
+}
+
+thead tr:last-child th:last-child {
+    border-top-right-radius: 10px;
+}
+
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+.ImageTD{
+    padding-bottom: 0px;
+}
+
+.TableWrapper,
+.Table{
+    width: 100%;
+}

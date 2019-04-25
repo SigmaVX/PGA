@@ -1,0 +1,69 @@
+button{
+    cursor: pointer;
+}
+
+.ButtonDefault{
+    padding: 10px 60px;
+    background-color: #0072bc;
+    border-radius: 20px;
+    width: 100%;
+    color: #fff;
+    margin: 10px auto;
+    display: inline-block;
+    outline: none;
+    font-weight: 700;
+}
+
+.ButtonDefault:hover{
+    background-color: #68cef2;
+    color: #0e0e0e;
+}
+
+
+.ButtonDefault:disabled{
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.ButtonDanger{
+    padding: 10px 60px;
+    background-color: #ee3124 ;
+    border-radius: 20px;
+    width: 100%;
+    color: #fff;
+    margin: 10px auto;
+    display: inline-block;
+    outline: none;
+    font-weight: 700;
+}
+
+
+.ButtonDanger:disabled{
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.ButtonDanger:hover{
+    background-color: salmon;
+}
+
+.ButtonSuccess{
+    padding: 10px 60px;
+    background-color: #b8dfc9;
+    border-radius: 20px;
+    width: 100%;
+    color: #fff;
+    margin: 10px auto;
+    display: inline-block;
+    outline: none;
+    font-weight: 700;
+}
+
+.ButtonSuccess:disabled{
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.ButtonSuccess:hover{
+    background-color: #00af5f;
+}

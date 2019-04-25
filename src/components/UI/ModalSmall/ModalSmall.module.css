@@ -1,0 +1,35 @@
+.Modal {
+    /* position: fixed; */
+    position: absolute;
+    z-index: 500;
+    background-color: #ddd;
+    width: 500px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px black;
+    padding: 16px;
+    right: 10px;
+    top: 22cd vh;
+    /* box-sizing: border-box; */
+    transition: all 0.3s ease-out;
+    border-radius: 10px;
+    overflow-y: auto;      
+    max-height: 80vh;
+}
+
+.ModalTitle{
+    margin: 10px;
+    text-align: center;
+    text-transform: capitalize;
+    font-size: 25px;
+}
+
+.show{
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.hide{
+    transform: translateX(150vw);
+    opacity: 0;
+}
+
