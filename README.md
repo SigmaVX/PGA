@@ -1,3 +1,22 @@
+# PGA Scores
+Keep Track Of Your Scores & More With This Little React App  That Includes:
+
+- Lifecycle Methods
+- Validations
+- Two Factor Sorting
+- Player CRUD
+- Annimations
+- Conditional Rending
+- Granular Components
+- Custom React Canvas
+- React CSS Modules
+
+
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

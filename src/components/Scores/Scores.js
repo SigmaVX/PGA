@@ -4,12 +4,6 @@ import deleteIcon from "../../assets/images/delete.svg"
 import editIcon from "../../assets/images/edituser.svg"
 
 
-const deleteGolfer = (id) =>{
-    console.log("Deleting Golfer Id: ", id);
-}
-
-
-
 const Scores = (props) =>{
     return(
         <div className={styles.TableWrapper}>
@@ -37,7 +31,7 @@ const Scores = (props) =>{
                                     <div className={styles.OptionIconWrap} onClick={()=>props.editGolfer(golfer.id)}>
                                         <img src={editIcon} alt="edit golfer"/>
                                     </div>
-                                    <div className={styles.OptionIconWrap} onClick={()=>deleteGolfer(golfer.id)}>
+                                    <div className={styles.OptionIconWrap} onClick={()=>props.deleteGolfer(golfer.id)}>
                                         <img src={deleteIcon} alt="delete golfer"/>
                                     </div>
                                 </td>

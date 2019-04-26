@@ -1,74 +1,24 @@
-.Spinner {
-    top: 45%;
-    left: 45%;
-    font-size: 25px;
-    width: 1em;
-    height: 1em;
-    border-radius: 50%;
+.Spinner{
+  position: relative;
+  width: 100vw;
+}
+
+.Spinner img{
     position: absolute;
-    -webkit-animation: load5 1.1s infinite ease;
-    animation: load5 1.1s infinite ease;
-    -webkit-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    transform: translateZ(0);
+    top: 0;
+    left: 20vw;
+    animation: spin infinite 20s linear;
+    height: 20vw;
+    width: 20vw;
+    transform-origin: center;
+    margin: 20px auto;
   }
-  @-webkit-keyframes load5 {
-    0%,
-    100% {
-      box-shadow: 0em -2.6em 0em 0em #68cef2, 1.8em -1.8em 0 0em rgba(82,23,81, 0.2), 2.5em 0em 0 0em rgba(82,23,81, 0.2), 1.75em 1.75em 0 0em rgba(82,23,81, 0.2), 0em 2.5em 0 0em rgba(82,23,81, 0.2), -1.8em 1.8em 0 0em rgba(82,23,81, 0.2), -2.6em 0em 0 0em rgba(82,23,81, 0.5), -1.8em -1.8em 0 0em rgba(82,23,81, 0.7);
+
+  @keyframes spin {
+    from {
+        transform: rotate(0deg);
     }
-    12.5% {
-      box-shadow: 0em -2.6em 0em 0em rgba(82,23,81, 0.7), 1.8em -1.8em 0 0em #521751, 2.5em 0em 0 0em rgba(82,23,81, 0.2), 1.75em 1.75em 0 0em rgba(82,23,81, 0.2), 0em 2.5em 0 0em rgba(82,23,81, 0.2), -1.8em 1.8em 0 0em rgba(82,23,81, 0.2), -2.6em 0em 0 0em rgba(82,23,81, 0.2), -1.8em -1.8em 0 0em rgba(82,23,81, 0.5);
+    to {
+        transform: rotate(360deg);
     }
-    25% {
-      box-shadow: 0em -2.6em 0em 0em rgba(82,23,81, 0.5), 1.8em -1.8em 0 0em rgba(82,23,81, 0.7), 2.5em 0em 0 0em  #68cef2, 1.75em 1.75em 0 0em rgba(82,23,81, 0.2), 0em 2.5em 0 0em rgba(82,23,81, 0.2), -1.8em 1.8em 0 0em rgba(82,23,81, 0.2), -2.6em 0em 0 0em rgba(82,23,81, 0.2), -1.8em -1.8em 0 0em rgba(82,23,81, 0.2);
-    }
-    37.5% {
-      box-shadow: 0em -2.6em 0em 0em rgba(82,23,81, 0.2), 1.8em -1.8em 0 0em rgba(82,23,81, 0.5), 2.5em 0em 0 0em rgba(82,23,81, 0.7), 1.75em 1.75em 0 0em  #68cef2, 0em 2.5em 0 0em rgba(82,23,81, 0.2), -1.8em 1.8em 0 0em rgba(82,23,81, 0.2), -2.6em 0em 0 0em rgba(82,23,81, 0.2), -1.8em -1.8em 0 0em rgba(82,23,81, 0.2);
-    }
-    50% {
-      box-shadow: 0em -2.6em 0em 0em rgba(82,23,81, 0.2), 1.8em -1.8em 0 0em rgba(82,23,81, 0.2), 2.5em 0em 0 0em rgba(82,23,81, 0.5), 1.75em 1.75em 0 0em rgba(82,23,81, 0.7), 0em 2.5em 0 0em  #68cef2, -1.8em 1.8em 0 0em rgba(82,23,81, 0.2), -2.6em 0em 0 0em rgba(82,23,81, 0.2), -1.8em -1.8em 0 0em rgba(82,23,81, 0.2);
-    }
-    62.5% {
-      box-shadow: 0em -2.6em 0em 0em rgba(82,23,81, 0.2), 1.8em -1.8em 0 0em rgba(82,23,81, 0.2), 2.5em 0em 0 0em rgba(82,23,81, 0.2), 1.75em 1.75em 0 0em rgba(82,23,81, 0.5), 0em 2.5em 0 0em rgba(82,23,81, 0.7), -1.8em 1.8em 0 0em  #68cef2, -2.6em 0em 0 0em rgba(82,23,81, 0.2), -1.8em -1.8em 0 0em rgba(82,23,81, 0.2);
-    }
-    75% {
-      box-shadow: 0em -2.6em 0em 0em rgba(82,23,81, 0.2), 1.8em -1.8em 0 0em rgba(82,23,81, 0.2), 2.5em 0em 0 0em rgba(82,23,81, 0.2), 1.75em 1.75em 0 0em rgba(82,23,81, 0.2), 0em 2.5em 0 0em rgba(82,23,81, 0.5), -1.8em 1.8em 0 0em rgba(82,23,81, 0.7), -2.6em 0em 0 0em  #68cef2, -1.8em -1.8em 0 0em rgba(82,23,81, 0.2);
-    }
-    87.5% {
-      box-shadow: 0em -2.6em 0em 0em rgba(82,23,81, 0.2), 1.8em -1.8em 0 0em rgba(82,23,81, 0.2), 2.5em 0em 0 0em rgba(82,23,81, 0.2), 1.75em 1.75em 0 0em rgba(82,23,81, 0.2), 0em 2.5em 0 0em rgba(82,23,81, 0.2), -1.8em 1.8em 0 0em rgba(82,23,81, 0.5), -2.6em 0em 0 0em rgba(82,23,81, 0.7), -1.8em -1.8em 0 0em  #68cef2;
-    }
-  }
-  @keyframes load5 {
-    0%,
-    100% {
-      box-shadow: 0em -2.6em 0em 0em #68cef2, 1.8em -1.8em 0 0em rgba(82,23,81, 0.2), 2.5em 0em 0 0em rgba(82,23,81, 0.2), 1.75em 1.75em 0 0em rgba(82,23,81, 0.2), 0em 2.5em 0 0em rgba(82,23,81, 0.2), -1.8em 1.8em 0 0em rgba(82,23,81, 0.2), -2.6em 0em 0 0em rgba(82,23,81, 0.5), -1.8em -1.8em 0 0em rgba(82,23,81, 0.7);
-    }
-    12.5% {
-      box-shadow: 0em -2.6em 0em 0em rgba(82,23,81, 0.7), 1.8em -1.8em 0 0em  #68cef2, 2.5em 0em 0 0em rgba(82,23,81, 0.2), 1.75em 1.75em 0 0em rgba(82,23,81, 0.2), 0em 2.5em 0 0em rgba(82,23,81, 0.2), -1.8em 1.8em 0 0em rgba(82,23,81, 0.2), -2.6em 0em 0 0em rgba(82,23,81, 0.2), -1.8em -1.8em 0 0em rgba(82,23,81, 0.5);
-    }
-    25% {
-      box-shadow: 0em -2.6em 0em 0em rgba(82,23,81, 0.5), 1.8em -1.8em 0 0em rgba(82,23,81, 0.7), 2.5em 0em 0 0em  #68cef2, 1.75em 1.75em 0 0em rgba(82,23,81, 0.2), 0em 2.5em 0 0em rgba(82,23,81, 0.2), -1.8em 1.8em 0 0em rgba(82,23,81, 0.2), -2.6em 0em 0 0em rgba(82,23,81, 0.2), -1.8em -1.8em 0 0em rgba(82,23,81, 0.2);
-    }
-    37.5% {
-      box-shadow: 0em -2.6em 0em 0em rgba(82,23,81, 0.2), 1.8em -1.8em 0 0em rgba(82,23,81, 0.5), 2.5em 0em 0 0em rgba(82,23,81, 0.7), 1.75em 1.75em 0 0em  #68cef2, 0em 2.5em 0 0em rgba(82,23,81, 0.2), -1.8em 1.8em 0 0em rgba(82,23,81, 0.2), -2.6em 0em 0 0em rgba(82,23,81, 0.2), -1.8em -1.8em 0 0em rgba(82,23,81, 0.2);
-    }
-    50% {
-      box-shadow: 0em -2.6em 0em 0em rgba(82,23,81, 0.2), 1.8em -1.8em 0 0em rgba(82,23,81, 0.2), 2.5em 0em 0 0em rgba(82,23,81, 0.5), 1.75em 1.75em 0 0em rgba(82,23,81, 0.7), 0em 2.5em 0 0em  #68cef2, -1.8em 1.8em 0 0em rgba(82,23,81, 0.2), -2.6em 0em 0 0em rgba(82,23,81, 0.2), -1.8em -1.8em 0 0em rgba(82,23,81, 0.2);
-    }
-    62.5% {
-      box-shadow: 0em -2.6em 0em 0em rgba(82,23,81, 0.2), 1.8em -1.8em 0 0em rgba(82,23,81, 0.2), 2.5em 0em 0 0em rgba(82,23,81, 0.2), 1.75em 1.75em 0 0em rgba(82,23,81, 0.5), 0em 2.5em 0 0em rgba(82,23,81, 0.7), -1.8em 1.8em 0 0em  #68cef2, -2.6em 0em 0 0em rgba(82,23,81, 0.2), -1.8em -1.8em 0 0em rgba(82,23,81, 0.2);
-    }
-    75% {
-      box-shadow: 0em -2.6em 0em 0em rgba(82,23,81, 0.2), 1.8em -1.8em 0 0em rgba(82,23,81, 0.2), 2.5em 0em 0 0em rgba(82,23,81, 0.2), 1.75em 1.75em 0 0em rgba(82,23,81, 0.2), 0em 2.5em 0 0em rgba(82,23,81, 0.5), -1.8em 1.8em 0 0em rgba(82,23,81, 0.7), -2.6em 0em 0 0em  #68cef2, -1.8em -1.8em 0 0em rgba(82,23,81, 0.2);
-    }
-    87.5% {
-      box-shadow: 0em -2.6em 0em 0em rgba(82,23,81, 0.2), 1.8em -1.8em 0 0em rgba(82,23,81, 0.2), 2.5em 0em 0 0em rgba(82,23,81, 0.2), 1.75em 1.75em 0 0em rgba(82,23,81, 0.2), 0em 2.5em 0 0em rgba(82,23,81, 0.2), -1.8em 1.8em 0 0em rgba(82,23,81, 0.5), -2.6em 0em 0 0em rgba(82,23,81, 0.7), -1.8em -1.8em 0 0em  #68cef2;
-    }
-  }
-  
-  @media (min-width: 300px) and (max-width: 1000px){
-      .Spinner{
-          margin-top: 300px;
-      }
-  }
+}

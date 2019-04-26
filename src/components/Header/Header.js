@@ -6,6 +6,8 @@ const Header = (props) =>{
     return(
         <header className={styles.Header}>
             <img src={logo} className={styles.Logo} alt="pga logo" />
+            <h1 className={styles.PageTitle}>PGA Scores</h1>
+            
         </header>
     );
 }

@@ -64,7 +64,6 @@ class UserForm extends Component {
 
 
     componentWillReceiveProps(nextProps){
-        console.log(nextProps.editUser);
         if(nextProps.editUser !== null){
            
             let userCopy = {...this.state.user};
@@ -86,7 +85,6 @@ class UserForm extends Component {
                 user: userCopy
             }
 
-            console.log(safeUpdateObject);
             this.setState(safeUpdateObject);
 
         } else {
@@ -102,6 +100,8 @@ class UserForm extends Component {
                 ...this.state,
                 user: resetUser
             }
+
+            safeUpdateObject.user.score.value = 50;
 
             this.setState(safeUpdateObject);
         }
@@ -143,7 +143,6 @@ class UserForm extends Component {
         
         safeUpdateObject.validForm = this.formCheck();
         this.setState(safeUpdateObject);
-        console.log(safeUpdateObject);
     }
 
     validationCheck = (value, rules) =>{
@@ -206,15 +205,13 @@ class UserForm extends Component {
             user: resetUser
         }
 
-        this.setState(safeUpdateObject);
-        console.log(safeUpdateObject);
-       
+        this.setState(safeUpdateObject);       
     }   
         
 
     // Returns Photo URL From Image Component
     returnPhotoURL = (photoUrl) =>{
-        console.log("Recieved Photo Callback: ", photoUrl);
+        // console.log("Recieved Photo Callback: ", photoUrl);
         let safeUpdateObject = {
             ...this.state,            
             user:{
@@ -232,8 +229,7 @@ class UserForm extends Component {
         }
 
         this.setState(safeUpdateObject);
-        console.log("Photo Captured: ", this.state.user.photoUrl.value);
-        console.log(this.state);
+        // console.log("Photo Captured: ", this.state.user.photoUrl.value);
     }
 
 
@@ -271,7 +267,13 @@ class UserForm extends Component {
                             }
                         />
                         
-                        <label className={styles.ModalFormLabel}>Add Photo</label>
+                        <label className={styles.ModalFormLabel}>
+                            {
+                                this.state.user.photoUrl.value===""
+                                ? "Add Photo"
+                                : "Photo Added"
+                            }
+                        </label>
                         <div className={styles.ImageUploadWrapper}>
                             <ImageUpload returnPhotoURL={this.returnPhotoURL}/>                
                         </div>

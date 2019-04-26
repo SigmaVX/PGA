@@ -5,19 +5,23 @@ import Header from "../../components/Header/Header";
 import Scores from "../../components/Scores/Scores";
 import Modal from "../../components/UI/Modal/Modal";
 import UserForm from "../../components/UserForm/UserForm";
+import Spinner from "../../components/UI/Spinner/Spinner";
+
+
+// Test User
+// {
+//     id: "initialuser",
+//     firstName: "Mike",
+//     lastName: "Cannata",
+//     photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
+//     score: 65
+// }
+
 
 class Home extends Component{
     
     state = {
-        golfers: [
-            {
-                id: "initialuser",
-                firstName: "Mike",
-                lastName: "Cannata",
-                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/ckw1e9qdz0svf3tm70su.png",
-                score: 65
-            }
-        ],
+        golfers: [],
         editUserObject: null,
         newUser: null,
         showModal: false,
@@ -40,20 +44,27 @@ class Home extends Component{
 
         // To Do
         //  allow to add players - done
-        //  allo to edit players
-        // allow to delete players 
+        //  allo to edit players - done
+        // allow to delete players  - done
         //  validation - score must be 0 to 100 - done
         // sort table - score and then last name - ASCENDING Order - done
         
+        // remove logs - done
+        // fix warnings
+        // add readme
+        // remove unused components
+        // check session storage config
+
         // Optional
         // add celebrate annimation 
         // add annimaiton on delete row
-
+        // add spinner on no users
+        // page layout
     }
 
 
     sendToParent = (userObject) =>{
-        console.log("User Info: ", userObject);
+        // console.log("User Info: ", userObject);
         let updatedGolfers = [...this.state.golfers];
 
         if(userObject.newUser){
@@ -86,7 +97,7 @@ class Home extends Component{
     }
 
     editGolfer = (id) =>{
-        console.log(id);
+        // console.log(id);
         let userObject = null;
         this.state.golfers.forEach((golfer, index)=>{
             if(golfer.id === id) userObject = this.state.golfers[index]
@@ -100,16 +111,26 @@ class Home extends Component{
         this.setState(safeUpdateObject);
         this.showModal(false);
     }
+
+    deleteGolfer = (id) =>{
+        let updatedGolfers = [...this.state.golfers]
+        let userIndex = null;
+        updatedGolfers.forEach((golfer, index)=>{
+            if(golfer.id = id) userIndex = index;
+        })
+        updatedGolfers.splice(userIndex, 1);
+        let safeUpdateObject = {
+            ...this.state,
+            golfers: updatedGolfers
+        }
+        this.setState(safeUpdateObject);
+    }
     
 
     // Modal Triggers
     // =============================================
     showModal = (newUser) => {
-        console.log(newUser);
-        if(newUser) {
-            this.setState({showModal: true, newUser: newUser, editUserObject: null});
-            console.log("Hit");
-        }
+        if(newUser) this.setState({showModal: true, newUser: newUser, editUserObject: null});
         if(!newUser) this.setState({showModal: true, newUser: newUser});      
         document.body.style.overflowY="hidden";
     }
@@ -136,15 +157,29 @@ class Home extends Component{
         return(
             <div className={styles.PageWrapper}>
                 <Header/>
+        
+                
                 <div className={styles.AddUserIconWrap} onClick={()=>this.showModal(true)}>
                     <img src={addUser} alt="add a user" />
                 </div>
-                <div className={styles.ScoresWrapper}>
-                    <Scores
-                        golfers={this.state.golfers}
-                        editGolfer={this.editGolfer}
-                    />
-                </div>
+
+                    {
+                        this.state.golfers.length === 0
+                        
+                        ?   <div className={styles.SpinnerWrapper} >
+                                <h2>Add Golfers To Get Started</h2>
+                                <p>(Try Cheering With The Favorites Icon)</p>
+                                <Spinner />
+                            </div>
+            
+                        :   <div className={styles.ScoresWrapper}>
+                                <Scores
+                                golfers={this.state.golfers}
+                                editGolfer={this.editGolfer}
+                                deleteGolfer={this.deleteGolfer}
+                                />
+                            </div>  
+                    }    
 
                 <Modal
                     showModal={this.state.showModal} 
