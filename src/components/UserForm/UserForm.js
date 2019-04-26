@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import styles from "./UserForm.module.css";
-import Input from '../../components/UI/Forms/Input/Input';
-import Button from "../../components/UI/Button/Button";
-import Slider from '../../components/UI/Forms/Slider/Slider';
-import ImageUpload from "../../components/UI/ImageUpload/ImageUpload";
+import Input from '../UI/Forms/Input/Input';
+import Button from "../UI/Button/Button";
+import Slider from '../UI/Forms/Slider/Slider';
+import ImageUpload from "../UI/ImageUpload/ImageUpload";
 const uuidv1 = require('uuid/v1');
 
 class UserForm extends Component {
 
     state = {
-        newUser: this.props.newUser,
-        validForm: null,
-        errorMessage: null,
+        validForm: true,
         user: {
             id:{
                 value: "",
@@ -42,7 +40,7 @@ class UserForm extends Component {
                 }
             },
             score: {
-                value: "",
+                value: 0,
                 touched: false,
                 validation: {
                     required: true,
@@ -65,7 +63,52 @@ class UserForm extends Component {
     }
 
 
+    componentWillReceiveProps(nextProps){
+        console.log(nextProps.editUser);
+        if(nextProps.editUser !== null){
+           
+            let userCopy = {...this.state.user};
+
+            for(let key in userCopy){
+                userCopy[key].touched = true;
+                userCopy[key].validation.valid = true;
+            }
+
+            userCopy.id.value=nextProps.editUser.id;
+            userCopy.firstName.value=nextProps.editUser.firstName;
+            userCopy.lastName.value=nextProps.editUser.lastName;
+            userCopy.photoUrl.value=nextProps.editUser.photoUrl;
+            userCopy.score.value=nextProps.editUser.score;
+
+            
+            let safeUpdateObject = {
+                ...this.state,
+                user: userCopy
+            }
+
+            console.log(safeUpdateObject);
+            this.setState(safeUpdateObject);
+
+        } else {
+            let resetUser = {...this.state.user};
+
+            for(let key in resetUser){
+                resetUser[key].value = "";
+                resetUser[key].touched = false;
+                resetUser[key].validation.valid = true;
+            }
+            
+            let safeUpdateObject = {
+                ...this.state,
+                user: resetUser
+            }
+
+            this.setState(safeUpdateObject);
+        }
+    }
+
     componentDidMount(){
+
         
 
     }
@@ -97,9 +140,10 @@ class UserForm extends Component {
                 }
             }
         }
-
-        console.log("Safe Update: ", safeUpdateObject);
+        
+        safeUpdateObject.validForm = this.formCheck();
         this.setState(safeUpdateObject);
+        console.log(safeUpdateObject);
     }
 
     validationCheck = (value, rules) =>{
@@ -110,66 +154,61 @@ class UserForm extends Component {
         }
     
         if(rules.minLength){
-            isValid = value.length > rules.minLength && isValid;
+            isValid = value.length >= rules.minLength && isValid;
         }
     
         if(rules.maxLength){
-            isValid = value.length < rules.maxLength && isValid; 
+            isValid = value.length <= rules.maxLength && isValid; 
         }
     
         return isValid;
     }
 
+    formCheck = () =>{
+
+        let validForm = true;
+        for(let key in this.state.user){
+            if(!this.state.user[key].validation.valid && this.state.user[key].validation.required) validForm = false;
+            if(!this.state.user[key].touched && this.state.user[key].validation.required) validForm = false;
+        } 
+
+        if(!validForm) return false;
+        if(validForm) return true;
+    }
+
     
     updateUser = () =>{
+
+        let id = this.state.user.id.value;
+        if(id === "") id = uuidv1(); 
         
-       let validForm = true;
-       for(let key in this.state.user){
-           if(!this.state.user[key].validation.valid) validForm = false;
-       } 
+        let sendObject = {
+            newUser: this.props.newUser,
+            id: id,
+            firstName: this.state.user.firstName.value,
+            lastName: this.state.user.lastName.value,
+            score: parseInt(this.state.user.score.value),
+            photoUrl: this.state.user.photoUrl.value
+        }
 
-       if(!validForm){
-           let safeUpdateObject = {
-               ...this.state,
-               validForm: false,
-               errorMessage: "Please Fix The Items Above Prior To Submitting"
-           }
+        this.props.sendToParent(sendObject);
 
-           this.setState(safeUpdateObject);
+        let resetUser = {...this.state.user};
 
-       } else {
+        for(let key in resetUser){
+            resetUser[key].value = "";
+            resetUser[key].touched = false;
+            resetUser[key].validation.valid = true;
+        }
+        
+        let safeUpdateObject = {
+            ...this.state,
+            user: resetUser
+        }
 
-            let id = this.state.id.value;
-            if(id !== "") id = uuidv1(); 
-         
-            let sendObject = {
-                newUser: this.state.newUser,
-                id: id,
-                firstName: this.state.user.firstName.value,
-                lastName: this.state.user.lastName.value,
-                score: this.state.user.score.value,
-                photoUrl: this.state.user.photoUrl.value
-            }
-
-            this.props.sendToParent(sendObject);
-
-            let resetUser = {...this.state.user};
-
-            for(let key in resetUser){
-                resetUser[key].value = "";
-                resetUser[key].touched = false;
-                resetUser[key].validation.valid = true;
-            }
-            
-            let safeUpdateObject = {
-                ...this.state,
-                errorMessage: null,
-                user: resetUser
-            }
-
-            this.setState(safeUpdateObject);
+        this.setState(safeUpdateObject);
+        console.log(safeUpdateObject);
        
-       }
     }   
         
 
@@ -194,6 +233,7 @@ class UserForm extends Component {
 
         this.setState(safeUpdateObject);
         console.log("Photo Captured: ", this.state.user.photoUrl.value);
+        console.log(this.state);
     }
 
 
@@ -230,8 +270,13 @@ class UserForm extends Component {
                                 : null
                             }
                         />
-
-                        <label className={styles.ModalFormLabel}>Small Map Zoom</label>               
+                        
+                        <label className={styles.ModalFormLabel}>Add Photo</label>
+                        <div className={styles.ImageUploadWrapper}>
+                            <ImageUpload returnPhotoURL={this.returnPhotoURL}/>                
+                        </div>
+                       
+                        <label className={styles.ModalFormLabel}>Score: {this.state.user.score.value}</label>               
                         <Slider 
                             className={styles.Input} 
                             min={0} 
@@ -240,23 +285,17 @@ class UserForm extends Component {
                             value={this.state.user.score.value}
                             onChange={(event)=>this.formInputChangeHandler(event, "score")}
                         />
-                        
-                        <label className={styles.ModalFormLabel}>Add Photo</label>
-                        <div className={styles.ImageUploadWrapper}>
-                            <ImageUpload returnPhotoURL={this.returnPhotoURL}/>                
-                        </div>
 
-                        {this.state.errorMessage 
-                            ? <h5 className={styles.ErrorText}>this.state.errorMessage</h5> 
+                        {!this.state.validForm 
+                            ? <h5 className={styles.ErrorText}>Please Provide The Information Above</h5> 
                             : null
                         }
 
-
                         <div className={styles.ModalButtons}>
-                            <Button onClick={this.addUser} buttonType='default' disable={!this.state.validForm}>
-                                {this.state.newUser? "Add User" : "Update User"}
+                            <Button onClick={this.updateUser} buttonType='default' disable={!this.state.validForm}>
+                                {this.props.newUser? "Add User" : "Update User"}
                             </Button>
-                            <Button onClick={this.closeModal} buttonType='default'>
+                            <Button onClick={this.props.closeModal} buttonType='default'>
                                 Cancel
                             </Button>
                         </div>

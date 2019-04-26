@@ -15,7 +15,6 @@ const Slider = (props) => {
                 value={props.value} 
                 onChange={props.onChange}    
             />
-            <p className={styles.ZoomText}>Zoom Setting: {props.value}</p>         
         </div>
     )
 }

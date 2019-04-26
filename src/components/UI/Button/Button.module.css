@@ -4,10 +4,10 @@ button{
 
 .ButtonDefault{
     padding: 10px 60px;
-    background-color: #0072bc;
+    background-color: #7ea0bf;
     border-radius: 20px;
     width: 100%;
-    color: #fff;
+    color: #222;
     margin: 10px auto;
     display: inline-block;
     outline: none;

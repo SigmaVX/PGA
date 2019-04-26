@@ -4,7 +4,7 @@
     border-radius: 25px;
     line-height: 20px;
     padding: 5px 20px;
-    border: 1px solid #F6F6F6;
+    color: black;
     outline: none;
     margin-bottom: 15px;
 }
@@ -15,7 +15,7 @@
 }
 
 .ValidationError {
-    color: blue;
+    color: #fff;
     margin: 5px 0;
     text-transform: capitalize;
     margin-top: -10px;

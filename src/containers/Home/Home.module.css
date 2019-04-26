@@ -1,4 +1,15 @@
-
+.AddUserIconWrap{
+    width: 25px;
+    height: 25px;
+    padding: 5px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background-color: #3f3e3a;
+    position: absolute;
+    top: 15vh;
+    left: 5vw;
+    cursor: pointer;
+}
 
 .PageWrapper{
     height: 90vh;

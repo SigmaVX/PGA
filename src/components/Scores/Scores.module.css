@@ -1,3 +1,11 @@
+tbody tr{
+    height: 22px;
+}
+
+tbody tr:hover{
+    background-color: lightblue;
+}
+
 tbody > tr:nth-child(odd){
     background-color: #ddd;
 }
@@ -6,26 +14,22 @@ tbody > tr:nth-child(even){
     background-color: #fff;
 }
 
-tbody tr{
-    height: 35px;
-}
-
 td{
     color: #3f3e3a;
-    padding-bottom: 15px;
     text-align: center;
+    vertical-align: middle;
 }
 
 thead{
     background-color: #3f3e3a;
-    font-weight: 1000;
-    font-size: 22px;
+    font-weight: 600;
+    font-size: 20px;
     color: #eff0f2;
 }
 
 th{
-    height: 40px;
-    padding-top: 10px;
+    height: 26px;
+    vertical-align: middle;
 }
 
 thead tr:first-child th:first-child {
@@ -36,19 +40,28 @@ thead tr:last-child th:last-child {
     border-top-right-radius: 10px;
 }
 
-table tr:last-child td:first-child {
-    border-bottom-left-radius: 10px;
+.GolferPhotoWrap img{
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
 }
 
-table tr:last-child td:last-child {
-    border-bottom-right-radius: 10px;
+.OptionsTD{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: 50% 50%;
 }
 
-.ImageTD{
-    padding-bottom: 0px;
+.OptionIconWrap{
+    width: 20px;
 }
 
 .TableWrapper,
 .Table{
     width: 100%;
+}
+
+.TextTD{
+    text-transform: capitalize;
 }

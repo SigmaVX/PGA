@@ -2,13 +2,13 @@
     /* position: fixed; */
     position: absolute;
     z-index: 500;
-    background-color: #ddd;
+    background-color: #334459;
     width: 80%;
     border: 1px solid #ccc;
     box-shadow: 1px 1px 1px black;
     padding: 16px;
     left: 10%;
-    top: 20vh;
+    top: 15vh;
     /* box-sizing: border-box; */
     transition: all 0.75s ease-out;
     border-radius: 10px;
@@ -17,7 +17,9 @@
 }
 
 .ModalTitle{
-    margin: 10px auto;
+    width: 100%;
+    display: block;
+    margin: 10px 5px 20px 5px; 
     text-align: center;
     text-transform: capitalize;
     font-size: 25px;

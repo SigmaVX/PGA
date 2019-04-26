@@ -44,6 +44,10 @@ table {
 	border-spacing: 0;
 }
 
+input, button{
+  border: none;
+}
+
 /* End Of CSS Reset */
 
 
