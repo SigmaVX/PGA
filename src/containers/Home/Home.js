@@ -1,11 +1,16 @@
 import React, {Component} from "react";
 import styles from "./Home.module.css";
 import addUser from "../../assets/images/adduser.svg";
+import question from "../../assets/images/question.svg";
 import Header from "../../components/Header/Header";
 import Scores from "../../components/Scores/Scores";
 import Modal from "../../components/UI/Modal/Modal";
 import UserForm from "../../components/UserForm/UserForm";
 import Spinner from "../../components/UI/Spinner/Spinner";
+import ModalSmall from "../../components/UI/ModalSmall/ModalSmall";
+import Button from "../../components/UI/Button/Button";
+import Gravity from "../../components/Canvas/Gravity/Gravity";
+import Floating from "../../components/Canvas/Floating/Floating";
 
 
 // Test User
@@ -21,26 +26,137 @@ import Spinner from "../../components/UI/Spinner/Spinner";
 class Home extends Component{
     
     state = {
-        golfers: [],
+        golfers: [
+            {
+                id: "initialuser",
+                firstName: "Mikasdfae",
+                lastName: "Cannata",
+                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
+                score: 65
+            },
+            {
+                id: "initialusertwo",
+                firstName: "Joe",
+                lastName: "Blow",
+                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
+                score: 65
+            },
+            {
+                id: "initialuser3",
+                firstName: "Mike",
+                lastName: "Cannata",
+                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
+                score: 65
+            },
+            {
+                id: "initialusertwo4",
+                firstName: "Joe",
+                lastName: "Blow",
+                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
+                score: 65
+            },
+            {
+                id: "initialuser5",
+                firstName: "Mike",
+                lastName: "Cannata",
+                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
+                score: 65
+            },
+            {
+                id: "initialusertw6o",
+                firstName: "Joe",
+                lastName: "Blow",
+                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
+                score: 65
+            },{
+                id: "initialugsreser",
+                firstName: "Mike",
+                lastName: "Cannata",
+                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
+                score: 65
+            },
+            {
+                id: "initialusqrqqrqertwo",
+                firstName: "Joe",
+                lastName: "Blow",
+                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
+                score: 65
+            },{
+                id: "initialuqrewser",
+                firstName: "Mike",
+                lastName: "Cannata",
+                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
+                score: 65
+            },
+            {
+                id: "initialutwetsertwo",
+                firstName: "Joe",
+                lastName: "Blow",
+                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
+                score: 65
+            },
+            {
+                id: "initialusqrqqrqertwo",
+                firstName: "Joe",
+                lastName: "Blow",
+                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
+                score: 65
+            },{
+                id: "initialuqrewser",
+                firstName: "Mike",
+                lastName: "Cannata",
+                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
+                score: 65
+            },
+            {
+                id: "initialutwetsertwo",
+                firstName: "Joe",
+                lastName: "Blow",
+                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
+                score: 65
+            },      {
+                id: "initialusqrqqrqertwo",
+                firstName: "Joe",
+                lastName: "Blow",
+                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
+                score: 65
+            },{
+                id: "initialuqrewser",
+                firstName: "Mike",
+                lastName: "Cannata",
+                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
+                score: 65
+            },
+            {
+                id: "initialutwetsertwo",
+                firstName: "Joe",
+                lastName: "Blow",
+                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
+                score: 65
+            }
+        ],
         editUserObject: null,
         newUser: null,
         showModal: false,
-        showConfirmModal: false
+        showInfoModal: false,
+        canvas: "floating",
+        clearGravityCanvas: false,
+        clearFloatCanvas: false,
+        celebrating: false,
+        celebrateText: ""
     }
     
     componentDidMount(){
 
-
-        // let storedData = JSON.parse(sessionStorage.getItem("golfers"));
-        // if(storedData !== null){
-        //     let safeUpdateObject = {
-        //         ...this.state,
-        //         golfers:  storedData.golfers
-        //     } 
-
-        //     console.log("Mounting: ", storedData.golfers);
-        //     this.setState(safeUpdateObject);
-        // }
+        let storedData = JSON.parse(sessionStorage.getItem("golfers"));
+        if(storedData !== null){
+            let safeUpdateObject = {
+                ...this.state,
+                golfers:  storedData.golfers
+            } 
+            console.log("Mounting: ", storedData.golfers);
+            this.setState(safeUpdateObject);
+        }
 
         // To Do
         //  allow to add players - done
@@ -50,19 +166,18 @@ class Home extends Component{
         // sort table - score and then last name - ASCENDING Order - done
         
         // remove logs - done
-        // fix warnings
-        // add readme
-        // remove unused components
-        // check session storage config
+        // add readme - done
+        // remove unused components - done
+        // add spinner on no users - done
+        // page layout - done
+        // check session storage config - done
+        // add celebrate annimation - done
 
-        // Optional
-        // add celebrate annimation 
-        // add annimaiton on delete row
-        // add spinner on no users
-        // page layout
+        // fix warnings
+        // deploy
     }
 
-
+    // Gets & Stores New & Edit Users
     sendToParent = (userObject) =>{
         // console.log("User Info: ", userObject);
         let updatedGolfers = [...this.state.golfers];
@@ -72,7 +187,7 @@ class Home extends Component{
         } else {
             let userIndex = null;
             updatedGolfers.forEach((golfer, index)=>{
-                if(golfer.id = userObject.id) userIndex = index;
+                if(golfer.id === userObject.id) userIndex = index;
             })
             updatedGolfers.splice(userIndex, 1, userObject)
         }
@@ -82,6 +197,7 @@ class Home extends Component{
             if(golferOne.score < golferTwo.score) return 1;
             if(golferOne.lastName < golferTwo.lastName) return -1;
             if(golferOne.lastName > golferTwo.lastName) return 1;
+            return 0;
         })
 
         let safeUpdateObject = {
@@ -96,6 +212,7 @@ class Home extends Component{
         this.closeModal();
     }
 
+    // Sends Data To User Form
     editGolfer = (id) =>{
         // console.log(id);
         let userObject = null;
@@ -112,11 +229,12 @@ class Home extends Component{
         this.showModal(false);
     }
 
+    // Removes Golfer From Array
     deleteGolfer = (id) =>{
         let updatedGolfers = [...this.state.golfers]
         let userIndex = null;
         updatedGolfers.forEach((golfer, index)=>{
-            if(golfer.id = id) userIndex = index;
+            if(golfer.id === id) userIndex = index;
         })
         updatedGolfers.splice(userIndex, 1);
         let safeUpdateObject = {
@@ -124,8 +242,50 @@ class Home extends Component{
             golfers: updatedGolfers
         }
         this.setState(safeUpdateObject);
+        sessionStorage.clear();
+        sessionStorage.setItem("golfers", JSON.stringify(safeUpdateObject));
     }
     
+    cheer = ()=>{
+        console.log("Hooray!!!  Thanks For Checking Out My App.");
+        if(this.state.celebrating){
+            
+            let safeUpdateObject = {
+                ...this.state,
+                celebrateText: (<p>We Are Busy Celebrating!<br></br>Wait Until Things Die Down Before Celebrating Again.</p>)
+            }
+            this.setState(safeUpdateObject);
+
+        } else {
+
+            let safeUpdateObject = {
+                ...this.state,
+                celebrating: true,
+                clearFloatCanvas: true,
+                celebrateText: (<p>Hooray!!!<br></br>I &hearts; Conditional Rendering</p>)
+            }
+
+            this.setState(safeUpdateObject);
+
+            let loadCanvas = setTimeout(()=>{
+                safeUpdateObject.canvas = "gravity";
+                this.setState(safeUpdateObject);
+            },500)
+
+            let clear = setTimeout(()=>{
+                safeUpdateObject.clearGravityCanvas = true;
+                safeUpdateObject.clearFloatCanvas = false;
+                safeUpdateObject.celebrating = false;
+                safeUpdateObject.celebrateText = (<p>The Party Is Over...For Now</p>);
+                this.setState(safeUpdateObject);
+            }, 10000)
+
+            let reset = setTimeout(()=>{
+                safeUpdateObject.canvas = "floating";
+                this.setState(safeUpdateObject);
+            }, 10500)
+        }
+    }
 
     // Modal Triggers
     // =============================================
@@ -140,13 +300,13 @@ class Home extends Component{
         document.body.style.overflowY=null;
     }
 
-    showConfirmModal = (id) => {
-        this.setState({showEditModal: true});
+    showInfoModal = () => {
+        this.setState({showInfoModal: true});
         document.body.style.overflowY="hidden";
     }
 
-    closeConfirmModal = () =>{
-        this.setState({showEditModal: false});
+    closeInfoModal = () =>{
+        this.setState({showInfoModal: false});
         document.body.style.overflowY=null;
     }
 
@@ -154,13 +314,30 @@ class Home extends Component{
 
     
     render(){
+
+        let canvasType = null;
+    
+        switch(this.state.canvas){
+          case ("gravity"): 
+            canvasType = <Gravity clearCanvas={this.state.clearGravityCanvas} />;
+            break; 
+          case ("floating"): 
+            canvasType = <Floating clearCanvas={this.state.clearFloatCanvas} />;
+            break;
+        }
+
         return(
             <div className={styles.PageWrapper}>
                 <Header/>
-        
+
+                {canvasType}
                 
                 <div className={styles.AddUserIconWrap} onClick={()=>this.showModal(true)}>
                     <img src={addUser} alt="add a user" />
+                </div>
+
+                <div className={styles.InfoIconWrap} onClick={this.showInfoModal}>
+                    <img src={question} alt="learn more" />
                 </div>
 
                     {
@@ -173,14 +350,17 @@ class Home extends Component{
                             </div>
             
                         :   <div className={styles.ScoresWrapper}>
+                                <div className={styles.CelebrateDiv}>{this.state.celebrateText}</div>
                                 <Scores
-                                golfers={this.state.golfers}
-                                editGolfer={this.editGolfer}
-                                deleteGolfer={this.deleteGolfer}
+                                    golfers={this.state.golfers}
+                                    editGolfer={this.editGolfer}
+                                    deleteGolfer={this.deleteGolfer}
+                                    cheer={this.cheer}
                                 />
                             </div>  
                     }    
-
+                
+                {/* Add/Edit User Modal */}
                 <Modal
                     showModal={this.state.showModal} 
                     closeModal={this.closeModal} 
@@ -195,6 +375,22 @@ class Home extends Component{
 
                 </Modal>
 
+                {/* Info Modal */}
+                <ModalSmall
+                    showModal={this.state.showInfoModal} 
+                    closeModal={this.closeInfoModal} 
+                    title={"About PGA Score"}
+                >
+                    <p className={styles.InfoText}>
+                    PGA Score lets you add, edit and remove golfers using React JS components.  This app uses Session Storage in lieu of a database.  Get started by selecting the add user icon.  Golfers are sorted by score in ascending order with a secondary sort based on last name.  Edit or delete users with the icons listed in each row.  Cheer on your favorites with the celebration icon.  This app is only intended for desktop use. 
+                    </p>
+
+                    <div className={styles.ModalButtons}>
+                        <Button onClick={this.closeInfoModal} buttonType='default'>Close</Button>
+                    </div>
+
+                </ModalSmall>
+                
             </div>
         );
     }

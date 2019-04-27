@@ -2,16 +2,16 @@ tbody tr{
     height: 22px;
 }
 
-tbody tr:hover{
-    background-color: lightblue;
-}
-
 tbody > tr:nth-child(odd){
     background-color: #ddd;
 }
 
 tbody > tr:nth-child(even){
     background-color: #fff;
+}
+
+tbody > tr:hover{
+    background-color: #ccc;
 }
 
 td{
@@ -28,36 +28,67 @@ thead{
 }
 
 th{
-    height: 26px;
+    height: 30px;
     vertical-align: middle;
 }
 
 thead tr:first-child th:first-child {
-    border-top-left-radius: 10px;
+    border-top-left-radius: 5px;
 }
 
 thead tr:last-child th:last-child {
-    border-top-right-radius: 10px;
+    border-top-right-radius: 5px;
 }
+
+/* tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+tbody tr:last-child td:last-child div:last-child {
+    border-bottom-right-radius: 10px;
+} */
 
 .GolferPhotoWrap img{
     width: 28px;
     height: 28px;
     border-radius: 50%;
+    margin-top: 2px;
 }
 
 .OptionsTD{
     display: grid;
     align-items: center;
-    justify-items: center;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
-.OptionIconWrap{
+.OptionIconWrap1{
+    grid-column: 1/2;
+    justify-self: stretch;
+    cursor: pointer;
+}
+
+.OptionIconWrap1 img{
     width: 20px;
 }
 
-.TableWrapper,
+.OptionIconWrap2{
+    grid-column: 2/3;
+    justify-self: stretch;
+    cursor: pointer;
+}
+
+.OptionIconWrap3{
+    grid-column: 3/4;
+    justify-self: stretch;
+    cursor: pointer;
+}
+
+.TableWrapper{
+    overflow-y:auto;
+    height: 50vh;
+    display:block;
+}
+
 .Table{
     width: 100%;
 }

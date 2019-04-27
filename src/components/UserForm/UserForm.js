@@ -9,7 +9,7 @@ const uuidv1 = require('uuid/v1');
 class UserForm extends Component {
 
     state = {
-        validForm: true,
+        validForm: false,
         user: {
             id:{
                 value: "",
@@ -236,6 +236,9 @@ class UserForm extends Component {
 
     render(){
 
+        let userScore = "N/A"
+        if(this.state.user.score.value !== 50 && this.state.user.score.touched) userScore = this.state.user.score.value;
+
         return (
             <React.Fragment>
 
@@ -278,7 +281,7 @@ class UserForm extends Component {
                             <ImageUpload returnPhotoURL={this.returnPhotoURL}/>                
                         </div>
                        
-                        <label className={styles.ModalFormLabel}>Score: {this.state.user.score.value}</label>               
+                        <label className={styles.ModalFormLabel}>Score: {userScore}</label>               
                         <Slider 
                             className={styles.Input} 
                             min={0} 
@@ -290,7 +293,7 @@ class UserForm extends Component {
 
                         {!this.state.validForm 
                             ? <h5 className={styles.ErrorText}>Please Provide The Information Above</h5> 
-                            : null
+                            : <h5 className={styles.ErrorText}>Submit Below</h5>
                         }
 
                         <div className={styles.ModalButtons}>
