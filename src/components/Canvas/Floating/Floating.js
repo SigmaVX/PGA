@@ -4,7 +4,7 @@ import * as logic from "./floatingAnnimation";
 class Floating extends Component{
 
     componentWillReceiveProps(nextProps){
-        console.log("Clear Floating Canvas: ", this.props.clearCanvas);
+        // console.log("Clear Floating Canvas: ", this.props.clearCanvas);
         if(nextProps.clearCanvas){
             logic.clearCanvas();  
         } else {

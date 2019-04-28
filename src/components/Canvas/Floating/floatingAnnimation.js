@@ -122,6 +122,6 @@ export const constructorAnnimation = () =>{
 export const clearCanvas =()=>{
     c.clearRect(0, 0, canvas.width, canvas.height);
     running = false;
-    console.log("Running: ", running);
+    // console.log("Running: ", running);
     circleArray = [];
 }

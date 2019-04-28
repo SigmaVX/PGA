@@ -13,127 +13,24 @@ import Gravity from "../../components/Canvas/Gravity/Gravity";
 import Floating from "../../components/Canvas/Floating/Floating";
 
 
-// Test User
-// {
-//     id: "initialuser",
-//     firstName: "Mike",
-//     lastName: "Cannata",
-//     photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
-//     score: 65
-// }
-
-
 class Home extends Component{
     
     state = {
         golfers: [
-            {
-                id: "initialuser",
-                firstName: "Mikasdfae",
-                lastName: "Cannata",
-                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
-                score: 65
-            },
-            {
-                id: "initialusertwo",
-                firstName: "Joe",
-                lastName: "Blow",
-                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
-                score: 65
-            },
-            {
-                id: "initialuser3",
-                firstName: "Mike",
-                lastName: "Cannata",
-                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
-                score: 65
-            },
-            {
-                id: "initialusertwo4",
-                firstName: "Joe",
-                lastName: "Blow",
-                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
-                score: 65
-            },
-            {
-                id: "initialuser5",
-                firstName: "Mike",
-                lastName: "Cannata",
-                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
-                score: 65
-            },
-            {
-                id: "initialusertw6o",
-                firstName: "Joe",
-                lastName: "Blow",
-                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
-                score: 65
-            },{
-                id: "initialugsreser",
-                firstName: "Mike",
-                lastName: "Cannata",
-                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
-                score: 65
-            },
-            {
-                id: "initialusqrqqrqertwo",
-                firstName: "Joe",
-                lastName: "Blow",
-                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
-                score: 65
-            },{
-                id: "initialuqrewser",
-                firstName: "Mike",
-                lastName: "Cannata",
-                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
-                score: 65
-            },
-            {
-                id: "initialutwetsertwo",
-                firstName: "Joe",
-                lastName: "Blow",
-                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
-                score: 65
-            },
-            {
-                id: "initialusqrqqrqertwo",
-                firstName: "Joe",
-                lastName: "Blow",
-                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
-                score: 65
-            },{
-                id: "initialuqrewser",
-                firstName: "Mike",
-                lastName: "Cannata",
-                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
-                score: 65
-            },
-            {
-                id: "initialutwetsertwo",
-                firstName: "Joe",
-                lastName: "Blow",
-                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
-                score: 65
-            },      {
-                id: "initialusqrqqrqertwo",
-                firstName: "Joe",
-                lastName: "Blow",
-                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
-                score: 65
-            },{
-                id: "initialuqrewser",
-                firstName: "Mike",
-                lastName: "Cannata",
-                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
-                score: 65
-            },
-            {
-                id: "initialutwetsertwo",
-                firstName: "Joe",
-                lastName: "Blow",
-                photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
-                score: 65
-            }
+            // {
+            //     id: "testuser1",
+            //     firstName: "Mike",
+            //     lastName: "Cannata",
+            //     photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/yrgwzygq2tmceryfmuov.png",
+            //     score: 65
+            // },
+            // {
+            //     id: "testuser2",
+            //     firstName: "Tony",
+            //     lastName: "Wible",
+            //     photoUrl: "http://res.cloudinary.com/cloudmash-llc/image/upload/v1556279928/i73ndhrksdreuqgmyh8j.png",
+            //     score: 60
+            // }
         ],
         editUserObject: null,
         newUser: null,
@@ -154,27 +51,10 @@ class Home extends Component{
                 ...this.state,
                 golfers:  storedData.golfers
             } 
-            console.log("Mounting: ", storedData.golfers);
+            // console.log("Mounting: ", storedData.golfers);
             this.setState(safeUpdateObject);
         }
 
-        // To Do
-        //  allow to add players - done
-        //  allo to edit players - done
-        // allow to delete players  - done
-        //  validation - score must be 0 to 100 - done
-        // sort table - score and then last name - ASCENDING Order - done
-        
-        // remove logs - done
-        // add readme - done
-        // remove unused components - done
-        // add spinner on no users - done
-        // page layout - done
-        // check session storage config - done
-        // add celebrate annimation - done
-
-        // fix warnings
-        // deploy
     }
 
     // Gets & Stores New & Edit Users
@@ -267,12 +147,14 @@ class Home extends Component{
 
             this.setState(safeUpdateObject);
 
-            let loadCanvas = setTimeout(()=>{
+            // Load New Gravity Canvas
+            setTimeout(()=>{
                 safeUpdateObject.canvas = "gravity";
                 this.setState(safeUpdateObject);
-            },500)
+            }, 500)
 
-            let clear = setTimeout(()=>{
+            // Clear Existing Canvas
+            setTimeout(()=>{
                 safeUpdateObject.clearGravityCanvas = true;
                 safeUpdateObject.clearFloatCanvas = false;
                 safeUpdateObject.celebrating = false;
@@ -280,10 +162,12 @@ class Home extends Component{
                 this.setState(safeUpdateObject);
             }, 10000)
 
-            let reset = setTimeout(()=>{
+            // Reset Canvas To Floating
+            setTimeout(()=>{
                 safeUpdateObject.canvas = "floating";
                 this.setState(safeUpdateObject);
             }, 10500)
+
         }
     }
 
@@ -318,12 +202,14 @@ class Home extends Component{
         let canvasType = null;
     
         switch(this.state.canvas){
-          case ("gravity"): 
-            canvasType = <Gravity clearCanvas={this.state.clearGravityCanvas} />;
-            break; 
-          case ("floating"): 
-            canvasType = <Floating clearCanvas={this.state.clearFloatCanvas} />;
-            break;
+            case ("gravity"): 
+                canvasType = <Gravity clearCanvas={this.state.clearGravityCanvas} />;
+                break; 
+            case ("floating"): 
+                canvasType = <Floating clearCanvas={this.state.clearFloatCanvas} />;
+                break;
+            default: 
+                canvasType = <Floating clearCanvas={this.state.clearFloatCanvas} />;
         }
 
         return(
@@ -344,7 +230,7 @@ class Home extends Component{
                         this.state.golfers.length === 0
                         
                         ?   <div className={styles.SpinnerWrapper} >
-                                <h2>Add Golfers To Get Started</h2>
+                                <h2 onClick={()=>this.showModal(true)}>Add Golfers With The Button Above<br></br>Or Click Here To Get Started</h2>
                                 <p>(Try Cheering With The Favorites Icon)</p>
                                 <Spinner />
                             </div>

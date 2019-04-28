@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./ImageUpload.module.css";
 
+
 const ImageUpload = (props) => {
     
     // Builds Script Tag For API - Not Used Since We Have <script> On Index
@@ -28,8 +29,8 @@ const ImageUpload = (props) => {
             // Croping Requires Custom Crop Setting on GUI Backend and "custom" option below
             // Resizing Done Client Side With maxImageHeight and maxImageWidth
             { 
-            cloudName: "cloudmash-llc", 
-            uploadPreset: "u4nvbqfw",
+            cloudName: process.env.REACT_APP_CLOUDNAME,
+            uploadPreset: process.env.REACT_APP_UPLOADPRESET,
             clientAllowedFormats: ["gif", "png", "jpg", "jpeg"],
             maxFileSize: 3500000,
             minFileSize: 10000,

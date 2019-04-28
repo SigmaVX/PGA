@@ -65,7 +65,13 @@
     font-size: 25px;
     font-weight: 700;
     overflow: visible;
+    cursor: pointer;
 }
+
+.SpinnerWrapper h2:hover{
+    color: #ddae45;
+}
+
 
 .SpinnerWrapper p{
     display: block;
